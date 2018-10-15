@@ -18,7 +18,7 @@ You are able to shorten links and view stats on links. If desired, you can also 
 
 # Implementation notes
 
-* To prevent XSS on *our* site (which I presume by default to be in-scope of the specs), escaping has been turned on by default in the template engine
+* To prevent XSS on *our* site (which I presume to be in-scope of the specs, by default), escaping has been turned on by default in the template engine
 * A couple places would have been a tad nicer with ajax, but it appeared non-essential, so I've elected to skip JS altogether
 
 
