@@ -1,4 +1,5 @@
 %div#new_links
 	%form#add-new-link(action="/app/shorten-url" method="POST")
-		%input(type="text" placeholder="shorten URL" name="url")
+		%input(type="text" placeholder="target URL" name="url")
+		%input(type="text" placeholder="(optional) desired short URL" name="slug")
 		%button(type="submit") create short URL

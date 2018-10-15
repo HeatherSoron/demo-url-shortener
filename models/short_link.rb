@@ -12,6 +12,10 @@ class ShortLink
 
 	belongs_to :user
 
+	def self.reserve_slug(slug)
+		return ShortLink.where({slug: slug}).count == 0
+	end
+
 	# self-saves (debatable whether we want to always save, in here; or leave that to the caller)
 	def track_usage
 		self.use_count += 1
@@ -21,7 +25,7 @@ class ShortLink
 
 	def set_unique_slug
 		self.slug = nil
-		while slug.nil? || ShortLink.where({slug: slug}).count > 0
+		while slug.nil? || !ShortLink.reserve_slug(slug)
 			p slug
 			self.slug = SecureRandom.urlsafe_base64(3) # 3 bytes = 4 chars, in practice
 		end

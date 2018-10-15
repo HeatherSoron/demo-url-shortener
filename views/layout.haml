@@ -3,4 +3,8 @@
 	%head
 		%link(type="text/css" rel="stylesheet" href="/app/css/main.css")
 	%body
+		%p#navbar
+			%a(href="/app/links") Overview Page
+			%a(href="/auth/login") Switch User
+		%hr
 		!= yield

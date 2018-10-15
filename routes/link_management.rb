@@ -9,7 +9,14 @@ post '/app/shorten-url' do
 	link = ShortLink.new
 	
 	link.url = params[:url]
-	link.set_unique_slug
+	if params[:slug].to_s == ''
+		link.set_unique_slug
+	else
+		unless ShortLink.reserve_slug(params[:slug])
+			halt haml :slug_not_available
+		end
+		link.slug = params[:slug]
+	end
 	link.created_at = Time.now
 	link.use_count = 0
 	link.user_id = session[:user_id]
