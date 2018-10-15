@@ -7,7 +7,5 @@
 }
 .tabular td, .tabular th {
 	border: 1px solid black;
-}
-.tabular th {
 	padding: 0.2em 0.5em;
 }
