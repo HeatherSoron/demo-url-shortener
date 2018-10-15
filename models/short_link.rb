@@ -30,4 +30,9 @@ class ShortLink
 			self.slug = SecureRandom.urlsafe_base64(3) # 3 bytes = 4 chars, in practice
 		end
 	end
+
+	index({slug: 1}, {unique: true})
+	index({slug: 1, user_id: 1})
+	# not sure off-hand how Mongoid handles indexes during a `.where(...).sort(...)`
+	# so not sure what sort of index to provide for `use_count` (which we also sort on)
 end

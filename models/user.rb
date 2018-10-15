@@ -18,4 +18,6 @@ class User
 		# may want to increase cost over time
 		self.pw_hash = BCrypt::Password.create(pw, :cost => 12)
 	end
+
+	index({username: 1}, {unique: true})
 end
