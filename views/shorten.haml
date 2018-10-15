@@ -1,8 +1,8 @@
 Short link is:
 %strong
-	=haml :_linkify, locals: { url: "#{request.base_url}/#{new_link.slug}" }
+	!=haml :_linkify, locals: { url: "#{request.base_url}/#{new_link.slug}" }
 
 %div
 	%p
 		Want to shorten another URL?
-	=haml :_link_adder
+	!=haml :_link_adder

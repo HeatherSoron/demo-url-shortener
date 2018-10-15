@@ -1,4 +1,4 @@
-=haml :_link_adder
+!=haml :_link_adder
 %div#link_output
 	%table.tabular
 		%tr
@@ -15,7 +15,7 @@
 				%td
 					=link.slug
 				%td
-					=haml :_linkify, locals: { url: link.url }
+					!=haml :_linkify, locals: { url: link.url }
 				%td
 					=link.last_used_at
 				%td
