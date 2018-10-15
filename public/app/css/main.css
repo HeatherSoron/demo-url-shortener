@@ -1,3 +1,7 @@
+#link_output {
+	margin: 1em;
+}
+
 .tabular {
 	border-collapse: collapse;
 }

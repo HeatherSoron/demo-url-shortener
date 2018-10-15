@@ -1,0 +1,6 @@
+development:
+  clients:
+    default:
+      database: url-shortener_demo
+      hosts:
+        - localhost:27017

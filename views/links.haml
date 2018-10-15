@@ -1,4 +1,8 @@
-%div
+%div#new_links
+	%form#add-new-link(action="/app/shorten-url" method="POST")
+		%input(type="text" placeholder="shorten URL" name="url")
+		%button(type="submit") create short URL
+%div#link_output
 	%table.tabular
 		%tr
 			-table_cols.each do |col|
