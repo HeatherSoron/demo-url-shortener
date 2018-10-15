@@ -11,8 +11,8 @@ class ShortLink
 	field :last_used_at, type: Time
 
 	def track_usage
-		use_count += 1
-		last_used_at = Time.now
+		self.use_count += 1
+		self.last_used_at = Time.now
 		self.save
 	end
 

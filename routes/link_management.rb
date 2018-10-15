@@ -1,15 +1,6 @@
 get '/app/links' do
-	HEADER_LIST = [
-		{
-			display_name: "Shortened",
-			field_name: "slug",
-		},
-		{
-			display_name: "Original URL",
-			field_name: "url",
-		},
-	]
-	haml :links, locals: { table_cols: HEADER_LIST, popular_links: [] }
+	popular_links = ShortLink.where({}).sort({use_count:-1}).limit(10)
+	haml :links, locals: { popular_links: popular_links }
 end
 
 post '/app/shorten-url' do

@@ -5,11 +5,22 @@
 %div#link_output
 	%table.tabular
 		%tr
-			-table_cols.each do |col|
-				%th
-					= col[:display_name]
+			%th
+				Shortened
+			%th
+				Original URL
+			%th
+				Most recent use
+			%th
+				Stats
 		-popular_links.each do |link|
 			%tr
-				-table_cols.each do |col|
-					%td
-						= link.send(col[:field_name])
+				%td
+					=link.slug
+				%td
+					%a{href: link.url}= link.url
+				%td
+					=link.last_used_at
+				%td
+					%a(href="/app/stats/#{link.slug}")
+						view stats
