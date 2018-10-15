@@ -10,6 +10,8 @@ class ShortLink
 	field :created_at, type: Time
 	field :last_used_at, type: Time
 
+	belongs_to :user
+
 	# self-saves (debatable whether we want to always save, in here; or leave that to the caller)
 	def track_usage
 		self.use_count += 1

@@ -1,6 +1,6 @@
 # purpose - overview page
 get '/app/links' do
-	popular_links = ShortLink.where({}).sort({use_count:-1}).limit(10)
+	popular_links = ShortLink.where({user_id: session[:user_id]}).sort({use_count:-1}).limit(10)
 	haml :links, locals: { popular_links: popular_links }
 end
 
@@ -12,6 +12,7 @@ post '/app/shorten-url' do
 	link.set_unique_slug
 	link.created_at = Time.now
 	link.use_count = 0
+	link.user_id = session[:user_id]
 
 	link.save
 
@@ -20,7 +21,7 @@ end
 
 # purpose - detailed stats on a link
 get '/app/stats/:slug' do |slug|
-	link = ShortLink.where({slug: slug}).first
+	link = ShortLink.where({user_id: session[:user_id], slug: slug}).first
 	
 	haml :stats, locals: { link: link }
 end
