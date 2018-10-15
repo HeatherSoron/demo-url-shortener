@@ -5,8 +5,9 @@ get %r{/(?<slug>[A-Za-z0-9_=-]+)/?} do
 		halt 404
 	end
 
-	# MAJOR concurrency issue here!
+	# TODO MAJOR concurrency issue here!
 	link.track_usage
 
-	return link.url
+	redirect link.url, 303
+	return nil
 end

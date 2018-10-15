@@ -1,8 +1,10 @@
+# purpose - overview page
 get '/app/links' do
 	popular_links = ShortLink.where({}).sort({use_count:-1}).limit(10)
 	haml :links, locals: { popular_links: popular_links }
 end
 
+# purpose - create a new shortened link. (non-ajax, as the specs don't actually require any client-side logic)
 post '/app/shorten-url' do
 	link = ShortLink.new
 	
@@ -14,4 +16,11 @@ post '/app/shorten-url' do
 	link.save
 
 	haml :shorten, locals: { new_link: link }
+end
+
+# purpose - detailed stats on a link
+get '/app/stats/:slug' do |slug|
+	link = ShortLink.where({slug: slug}).first
+	
+	haml :stats, locals: { link: link }
 end

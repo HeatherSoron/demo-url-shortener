@@ -18,7 +18,7 @@
 				%td
 					=link.slug
 				%td
-					%a{href: link.url}= link.url
+					=haml :_linkify, locals: { url: url }
 				%td
 					=link.last_used_at
 				%td

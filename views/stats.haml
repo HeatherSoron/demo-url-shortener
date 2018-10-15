@@ -1,0 +1,13 @@
+%table.tabular
+	%tr
+		%th Shortened
+		%th Original URL
+		%th Usage count
+		%th Most recent usage
+		%th Created at
+	%tr
+		%td= link.slug
+		%td= haml :_linkify, locals: { url: link.url }
+		%td= link.use_count
+		%td= link.last_used_at
+		%td= link.created_at
