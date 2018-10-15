@@ -1,0 +1,11 @@
+%div
+	%table.tabular
+		%tr
+			-table_cols.each do |col|
+				%th
+					= col[:display_name]
+		-popular_links.each do |link|
+			%tr
+				-table_cols.each do |col|
+					%td
+						= link.send(col[:field_name])
